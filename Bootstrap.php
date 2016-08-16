@@ -11,6 +11,7 @@
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Shopware\Plugins\PixelartRolesConfig\Commands\ExportRolesCommand;
+use Shopware\Plugins\PixelartRolesConfig\Commands\ImportRolesCommand;
 use Symfony\Component\Console\Command\Command;
 
 /**
@@ -99,6 +100,7 @@ class Shopware_Plugins_Backend_PixelartRolesConfig_Bootstrap extends Shopware_Co
     {
         return new ArrayCollection([
             new ExportRolesCommand(),
+            new ImportRolesCommand(),
         ]);
     }
 
