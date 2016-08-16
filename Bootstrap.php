@@ -9,6 +9,10 @@
  * file that was distributed with this source code.
  */
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Shopware\Plugins\PixelartRolesConfig\Commands\ExportRolesCommand;
+use Symfony\Component\Console\Command\Command;
+
 /**
  * @author Patrik Karisch <p.karisch@pixelart.at>
  */
@@ -61,6 +65,11 @@ class Shopware_Plugins_Backend_PixelartRolesConfig_Bootstrap extends Shopware_Co
             throw new DomainException('This plugin requires Shopware '.$requiredVersion.' or a later version');
         }
 
+        $this->subscribeEvent(
+            'Shopware_Console_Add_Command',
+            'onAddConsoleCommand'
+        );
+
         return true;
     }
 
@@ -70,6 +79,27 @@ class Shopware_Plugins_Backend_PixelartRolesConfig_Bootstrap extends Shopware_Co
     public function update($version)
     {
         return true;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function afterInit()
+    {
+        $this->Application()->Loader()->registerNamespace(
+            'Shopware\Plugins\PixelartRolesConfig',
+            $this->Path()
+        );
+    }
+
+    /**
+     * @return Command[]
+     */
+    public function onAddConsoleCommand()
+    {
+        return new ArrayCollection([
+            new ExportRolesCommand(),
+        ]);
     }
 
     /**
