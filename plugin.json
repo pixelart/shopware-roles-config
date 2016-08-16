@@ -1,0 +1,19 @@
+{
+    "label": {
+        "de": "Rollen aus Konfiguration laden",
+        "en": "Load roles from config"
+    },
+    "copyright": "(c) 2016 by pixelart GmbH",
+    "license": "MIT",
+    "link": "https://github.com/pixelart/shopware-roles-config",
+    "author": "pixelart GmbH",
+
+    "currentVersion": "1.0.0",
+
+    "compatibility": {
+        "minimumVersion": "5.1.0",
+        "maximumVersion": null,
+        "blacklist": [
+        ]
+    }
+}
