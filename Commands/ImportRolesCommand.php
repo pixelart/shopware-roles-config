@@ -14,7 +14,6 @@ namespace Shopware\Plugins\PixelartRolesConfig\Commands;
 use Shopware\Commands\ShopwareCommand;
 use Shopware\Components\Model\ModelManager;
 use Shopware\Models\User\Privilege;
-use Shopware\Models\User\Resource;
 use Shopware\Models\User\Role;
 use Shopware\Models\User\Rule;
 use Symfony\Component\Console\Input\InputArgument;
@@ -49,6 +48,8 @@ class ImportRolesCommand extends ShopwareCommand
     {
         $path = rtrim($input->getArgument('path'), '/\\');
         $errOutput = $output instanceof ConsoleOutputInterface ? $output->getErrorOutput() : $output;
+
+        /** @var ModelManager $em */
         $em = $this->getContainer()->get('models');
 
         $qb = $em->createQueryBuilder();

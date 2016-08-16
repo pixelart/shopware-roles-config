@@ -12,11 +12,13 @@
 namespace Shopware\Plugins\PixelartRolesConfig\Commands;
 
 use Shopware\Commands\ShopwareCommand;
+use Shopware\Components\Model\ModelManager;
 use Shopware\Models\User\Role;
 use Shopware\Models\User\Rule;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Yaml\Yaml;
 
 /**
@@ -42,7 +44,11 @@ class ExportRolesCommand extends ShopwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $path = rtrim($input->getArgument('path'), '/\\');
+
+        /** @var Filesystem $filesystem */
         $filesystem = $this->getContainer()->get('file_system');
+
+        /** @var ModelManager $em */
         $em = $this->getContainer()->get('models');
 
         $qb = $em->getRepository('Shopware\Models\User\Role')->createQueryBuilder('role');

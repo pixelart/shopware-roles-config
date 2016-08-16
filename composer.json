@@ -1,0 +1,31 @@
+{
+    "name": "pixelart/shopware-roles-config",
+    "type": "shopware-backend-plugin",
+    "description": "Import and export shopware roles from config files",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Patrik Karisch",
+            "email": "p.karisch@pixelart.at"
+        },
+        {
+            "name": "pixelart GmbH",
+            "homepage": "https://www.pixelart.at"
+        }
+    ],
+    "require": {
+        "composer/installers": "^1.0.9",
+        "symfony/filesystem": "^2.7",
+        "symfony/finder": "^2.7",
+        "symfony/yaml": "^2.7"
+    },
+    "require-dev": {
+        "shopware/shopware": "^5.1"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        },
+        "installer-name": "PixelartRolesConfig"
+    }
+}
